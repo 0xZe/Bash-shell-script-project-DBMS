@@ -1,3 +1,4 @@
+#!/bin/bash
 dir=DataBases
 if [ "$(ls -A $dir)" ]; 
     
@@ -7,10 +8,12 @@ if [ "$(ls -A $dir)" ];
     echo "======================="
     ls $dir
     echo "======================="
+    ./main.sh
 
 else 
     echo "========================="
     echo "NO AVAILABLE DATABASES!!!"
     echo "=========================="
+    ./main.sh
     
 fi
