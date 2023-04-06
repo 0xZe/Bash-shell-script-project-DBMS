@@ -16,7 +16,7 @@ else
   echo "============================================"
   echo "Database $db_name deleted successfully!!!!!!"
   echo "============================================"
-
+  
     ./main.sh
 
-fi   
+    fi
