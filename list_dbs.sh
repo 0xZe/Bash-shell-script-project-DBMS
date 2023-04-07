@@ -6,7 +6,7 @@ if [ "$(ls -A $dir)" ];
     echo "======================="
     echo "AVAILABLE DATABASES IS:"
     echo "======================="
-    ls $dir
+    ls $dir 
     echo "======================="
     ./main.sh
 

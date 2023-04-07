@@ -19,4 +19,4 @@ else
   
     ./main.sh
 
-    fi
+fi

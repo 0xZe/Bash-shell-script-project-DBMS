@@ -6,14 +6,21 @@
   
 
 if [ $? -eq 0 ]
+
   then
+    echo "========================================="
     echo "Connected to $db_name Successfully!!!!!!"
+    echo "========================================="
     cd ..
     cd ..
     ./manipulate_db.sh $db_name
     ./main.sh
+
   else
-    echo "Database $db_name wasn't found"
+    echo "================================"
+    echo "Database $db_name wasn't found!!"
+    echo "================================"
     ./main.sh
+
 fi
        
