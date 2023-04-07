@@ -1,6 +1,6 @@
 db_name=$1
 function taple_name_constrain(){
-var='!@#$%^&*()'
+var='!@#$%^&*()/?\|'
 db_namee=$db_name
 while true;
 do
