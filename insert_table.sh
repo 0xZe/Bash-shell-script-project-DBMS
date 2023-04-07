@@ -4,6 +4,7 @@ if [ -e ./DataBases/$1/$table_name  ]; then
     for (( i = 1 ; i <= "$(awk -F: '{print NF}' DataBases/$1/.metadata/$table_name.meta )"  ; i++ )) 
       do
       #check col_value
+      var='!@#$%^&*()/?\|'
       while true;
       do
             read -p "Enter value: " col_value
