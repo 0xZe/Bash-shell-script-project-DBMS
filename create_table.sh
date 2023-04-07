@@ -8,25 +8,25 @@ do
 if  [[  $table_name =~ [0-9]+$ ]]; 
   
         then
-        echo "Table name can't contain numbers))"
+        echo "Invalid input! name of table can not be numbers!"
           
 elif
       [[ $table_name =~ [$var] ]];  
 
         then
-        echo " Table name can't have regex"
+        echo " Invalid input! name of table can't be regex! "
           
 elif
       [[ -z "$table_name" ]];  
         
         then
-        echo "Taple name can't be empty"
+        echo " Invalid input! name of taple can't be empty "
           
 elif 
       [[  $table_name = *" "* ]];  
       
         then
-        echo "Table name can't contain spaces"
+        echo " Invalid input! name of taple can't contain spaces "
   
 else 
       touch DataBases/$db_namee/$table_name
@@ -45,7 +45,7 @@ function create_column(){
   db_nameee=$db_name
    while true;
    do
-    read -p "Enter number  coloums: " coloum_number
+    read -p "Enter numbers of coloums: " coloum_number
         if [[ $coloum_number =~ ^[0-9]+$ ]]; 
     
         then
@@ -53,7 +53,7 @@ function create_column(){
 
         else
 
-        echo "Number of columns can't be empty or string"
+        echo " Invalid input! Enter Numbers ONLY "
 
         fi
     done
