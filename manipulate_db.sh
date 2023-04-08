@@ -15,7 +15,7 @@ do
         . ./select_table.sh $1
           ;;
         5)
-        . ./update_table.sh
+        . ./update_table.sh $1
           ;; 
         6)
         . ./delete_table.sh $1
