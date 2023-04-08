@@ -18,22 +18,24 @@ else
   #echo "Database $db_name deleted successfully!!!!!!"
   #echo "============================================"
   
-  echo "Are you Sure You Want To delete $db_name Database? y/n"
+  echo -e "Are you Sure You Want To delete $db_name Database? y/n \c"
   read choice;
 	case $choice in
 		 [Yy]* ) 
-			rm -r data/$db_name
+			rm -r "$db_path"
 			echo "============================================"
          		echo "Database $db_name deleted successfully!!!!!!"
          		echo "============================================"
 			;;
 		 [Nn]* ) 
-      			echo "==========="
+      			echo "======================"
 			echo "Deleting Canceled!!!"
-      			echo "==========="
+      			echo "======================"
 			;;
-		* ) 
+		 * ) 
+		 	echo "===================="
 			echo "Please choice y/n"
+			echo "===================="
 			;;
 	esac
   
