@@ -1,50 +1,55 @@
 #!/bin/bash
 db_name=$1
-read  -p  "Enter Table you want to delete: " table_name
+read  -p  "Enter Table you want to update: " table_name
 table_path=DataBases/$db_name/$table_name
 
 if [ ! -f "$table_path" ]; then
 
+    echo "==========================="
     echo "Table does not exist!!!!!!"
+    echo "==========================="
 
-    ./manipulate_db.sh $1
+    ./manipulate_db.sh $db_name
 
 else
 
-    echo "Enter column you want to update: "
-    read col_update
-                                                             
-    check_col=`awk -v RS=':' "/$col_update/ "'{print NR}' ./DataBases/$1/.metadata/$table_name.meta``
-    col_NR=`awk -v RS=':' "/$col_update/ "'{print NR}' ./DataBases/$1/.metadata/$table_name.meta``
+    #column you want to update into
+    read  -p  "Enter column you want to update: " col_update
+                                                          
+    check_col=`awk -v RS=':' "/$col_update/ "'{print NR}' DataBases/$db_name/.metadata/$table_name.meta`
+    col_NR=`awk -v RS=':' "/$col_update/ "'{print NR}' DataBases/$db_name/.metadata/$table_name.meta`
 
-    if [ -z $check_col ]
-      then
-      echo "Column does not exist!!!!!"
+    if [ -z $check_col ]; then
 
-      ./manipulate_db.sh $1
+        echo "==========================="
+        echo "Column does not exist!!!!!"
+        echo "==========================="
+
+        ./manipulate_db.sh $db_name
 
     else
 
-    #value you want to change
-    echo "Enter $col_update value you want to change: "
-    read value_update
+        #value you want to change
+        read  -p  "Enter $col_update value you want to change: " value_update
 
+        value_NR=`cut -d: -f $col_NR DataBases/$db_name/$table_name 2>/dev/null | awk "/$value_update/ "'{print NR}'`
     
-    value_NR=`cut -d: -f $col_NR mytb 2>/dev/null | awk "/$value_update/ "'{print NR}' `
+        read  -p  "Enter new $value_update value: " new_value
     
 
-    echo "Enter new $value_update value"
-    read new_value
+        old_value=$(awk 'BEGIN{FS=":"} {
+        if(NR=="'$value_NR'"){
+            print $'$col_NR';     
+            }
+          }' DataBases/$db_name/$table_name)
 
-    old_value=$(awk 'BEGIN{FS=":"} {
-    if(NR=="'$value_NR'"){
-         print $'$col_NR';     
-         }
-      }' ./DataBases/$1/$table_name)
+        sed -i ''$value_NR's/'$old_value'/'$new_value'/g' DataBases/$db_name/$table_name 2>>/dev/null
 
-    sed -i ''$value_NR's/'$old_value'/'$new_value'/g' mytb 2>>/dev/null
+        echo "========================================="
+        echo "$col_update is updated  successfully!!!!"
+        echo "========================================="
 
-    echo "Updated $col_update successfully !!!"
+        ./manipulate_db.sh $db_name
 
     fi
     
