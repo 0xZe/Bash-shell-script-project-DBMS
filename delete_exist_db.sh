@@ -12,7 +12,7 @@ then
     ./main.sh
 
 else
-  rm -ir "$db_path"
+  rm -r "$db_path"
   echo "============================================"
   echo "Database $db_name deleted successfully!!!!!!"
   echo "============================================"
