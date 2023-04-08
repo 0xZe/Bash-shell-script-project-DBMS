@@ -22,15 +22,15 @@ else
 	read choice;
 	case $choice in
 		 [Yy]* ) 
-			   rm -r data/$db_name
-			   echo "============================================"
-         echo "Database $db_name deleted successfully!!!!!!"
-         echo "============================================"
+			rm -r data/$db_name
+			echo "============================================"
+         		echo "Database $db_name deleted successfully!!!!!!"
+         		echo "============================================"
 			;;
 		 [Nn]* ) 
-      echo "==========="
+      			echo "==========="
 			echo "Canceled!!!"
-      echo "==========="
+      			echo "==========="
 			;;
 		* ) 
 			echo "Please choice y/n"
