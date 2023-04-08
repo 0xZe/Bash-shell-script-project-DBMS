@@ -19,7 +19,7 @@ else
   #echo "============================================"
   
   echo "Are you Sure You Want To delete $db_name Database? y/n"
-	read choice;
+  read choice;
 	case $choice in
 		 [Yy]* ) 
 			rm -r data/$db_name
@@ -29,7 +29,7 @@ else
 			;;
 		 [Nn]* ) 
       			echo "==========="
-			echo "Canceled!!!"
+			echo "Deleting Canceled!!!"
       			echo "==========="
 			;;
 		* ) 
