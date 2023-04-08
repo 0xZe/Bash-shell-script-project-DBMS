@@ -25,7 +25,9 @@ if [ -e ./DataBases/$1/$table_name  ]; then
       #insert
       if (( $i == "$(awk -F: '{print NF}' DataBases/$1/.metadata/$table_name.meta )" )); then
             echo "$col_value" >> DataBases/$1/$table_name
-            echo "Insert is done!!!!"
+            echo "=============================================="
+            echo "Insert in $table_name is done sucessfully!!!!"
+            echo "=============================================="
             break
       elif (( $i < "$(awk -F: '{print NF}' DataBases/$1/.metadata/$table_name.meta )" )); then
             echo -e "$col_value:\c" >>  DataBases/$1/$table_name
